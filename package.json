@@ -14,8 +14,8 @@
   "contributes": {
     "commands": [
       {
-        "command": "apibanking.helloWorld",
-        "title": "Hello World"
+        "command": "apibanking.format",
+        "title": "format"
       }
     ]
   },

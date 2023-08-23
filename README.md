@@ -17,13 +17,13 @@ You can install the extension from the [Visual Studio Code Marketplace](https://
 1. Open a Markdown file that contains code blocks.
 2. Use the following format to create code blocks for XML or JSON:
 
-   ```xml
-   <!-- Your XML code here -->
-   ```
+```xml
+<!-- Your XML code here -->
+```
 
-   ```json
-   // Your JSON code here
-   ```
+```json
+// Your JSON code here
+```
 
 3. To format the code blocks, use the command palette (`Ctrl+Shift+P`), search for "Format Code Blocks," and select it.
 

@@ -77,6 +77,36 @@ import * as vscode from 'vscode';
 
 
 
+// async function formatCodeBlocks() {
+//     const editor = vscode.window.activeTextEditor;
+
+//     if (editor) {
+//         const document = editor.document;
+//         const text = document.getText();
+
+//         // Patrón de bloque de código XML o JSON en Markdown
+//         const pattern = /```(xml|json)\n([\s\S]*?)\n```/g;
+
+//         let newText = text.replace(pattern, (_match, lang, code) => {
+//             const title = lang.toUpperCase();
+//             const isActive = lang === 'xml' ? ' active' : '';
+//             return `<code-group>\n<code-block title="${title}"${isActive}>\n\`\`\`${lang}\n${code}\n\`\`\`\n</code-block>\n</code-group>`;
+//         });
+
+//          // Reemplazar secuencia "</code-group>\n<code-group>" por un espacio
+//         newText = newText.replace(/<\/code-group>\n<code-group>/g, ' ');
+
+//         // Reemplazar cierre de tag </code-group> seguido de apertura <code-group> por un espacio
+//         newText = newText.replace(/<\/code-group>\s*<code-group>/g, ' ');
+         
+//         if (newText !== text) {
+//             const edit = new vscode.WorkspaceEdit();
+//             edit.replace(document.uri, new vscode.Range(0, 0, document.lineCount, 0), newText);
+//             await vscode.workspace.applyEdit(edit);
+//         }
+//     }
+// }
+
 async function formatCodeBlocks() {
     const editor = vscode.window.activeTextEditor;
 
@@ -93,12 +123,12 @@ async function formatCodeBlocks() {
             return `<code-group>\n<code-block title="${title}"${isActive}>\n\`\`\`${lang}\n${code}\n\`\`\`\n</code-block>\n</code-group>`;
         });
 
-         // Reemplazar secuencia "</code-group>\n<code-group>" por un espacio
+        // Reemplazar secuencia "</code-group>\n<code-group>" por un espacio
         newText = newText.replace(/<\/code-group>\n<code-group>/g, ' ');
 
         // Reemplazar cierre de tag </code-group> seguido de apertura <code-group> por un espacio
         newText = newText.replace(/<\/code-group>\s*<code-group>/g, ' ');
-         
+
         if (newText !== text) {
             const edit = new vscode.WorkspaceEdit();
             edit.replace(document.uri, new vscode.Range(0, 0, document.lineCount, 0), newText);
@@ -106,7 +136,6 @@ async function formatCodeBlocks() {
         }
     }
 }
-
 
 
 export function activate(context: vscode.ExtensionContext) {
@@ -118,10 +147,10 @@ export function activate(context: vscode.ExtensionContext) {
 	// The command has been defined in the package.json file
 	// Now provide the implementation of the command with registerCommand
 	// The commandId parameter must match the command field in package.json
-	let disposable = vscode.commands.registerCommand('apibanking.helloWorld', () => {
+	let disposable = vscode.commands.registerCommand('apibanking.format', () => {
 		// The code you place here will be executed every time your command is executed
 		// Display a message box to the user
-		vscode.window.showInformationMessage('Hello World from ApiBanking!');
+		vscode.window.showInformationMessage('Format documente md by ApiBanking v1!');
 		formatCodeBlocks();
 	});
 
